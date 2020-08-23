@@ -22,3 +22,4 @@ cd isucon10-recipe
 
 - tmux
 - jq
+- alp
