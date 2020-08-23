@@ -1,3 +1,3 @@
 #!/bin/bash
-ROLE=${1:-app}
+ROLE=${ROLE:-app}
 exec mitamae local "$@" --node-yaml="nodes/$ROLE.yml" entrypoint.rb
