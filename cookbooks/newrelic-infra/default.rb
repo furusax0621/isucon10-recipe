@@ -17,3 +17,7 @@ execute "update repositories" do
 end
 
 package "newrelic-infra"
+
+service "newrelic-infra" do
+  action [:enable, :start]
+end
