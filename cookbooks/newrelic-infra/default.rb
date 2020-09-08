@@ -13,7 +13,7 @@ template "/etc/newrelic-infra.yml" do
 end
 
 execute "update repositories" do
-  command "apt-get update"
+  command "apt update"
 end
 
 package "newrelic-infra"
