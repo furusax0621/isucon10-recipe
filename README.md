@@ -4,13 +4,20 @@
 
 ## 使い方
 
-各サーバーのSSH公開鍵を本リポジトリのDeploy Keyに登録して、次のコマンドを実行します。
+### レシピのアップロード
 
 ```sh
-git clone git@github.com:furusax0621/isucon10-recipe.git
-cd isucon10-recipe
-sudo ./bootstrap.sh
-sudo ./install.sh
+./sync.sh <server>
+```
+
+### レシピの反映
+
+```sh
+sudo su -
+mkdir /recipe && cd /recipe
+tar xvzf /tmp/recipe.tar.gz
+./bootstrap.sh
+./install.sh
 ```
 
 レシピが通るか試したいときは `-n` オプションを付けてください。
@@ -21,6 +28,8 @@ sudo ./install.sh
 
 ## インストールされるもの
 
+- unzip
 - tmux
 - jq
 - alp
+- newrelic-infra
