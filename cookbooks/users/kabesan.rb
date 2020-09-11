@@ -1,0 +1,32 @@
+USER_NAME = "kabesan"
+
+user USER_NAME do
+  action :create
+  home "/home/#{USER_NAME}"
+  shell "/bin/bash"
+end
+
+directory "/home/#{USER_NAME}/.ssh" do
+  group USER_NAME
+  owner USER_NAME
+  mode "0755"
+  action :create
+end
+
+template "/home/#{USER_NAME}/.bashrc" do
+  group USER_NAME
+  owner USER_NAME
+  mode "0644"
+  source "templates/bashrc.erb"
+end
+
+file "/home/#{USER_NAME}/.ssh/authorized_keys" do
+  group USER_NAME
+  owner USER_NAME
+  mode "0644"
+  content <<'EOS'
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDAb/DABiu1vnatxPi5VTNb8x80JkQrZLufGfAZiNGaXd0DA6OXD9nXSIZySqp+4Ql8AY5C16SPyNNJNokKouAcZ+z+cg0r9xBovDZ8kcti3ceIVS95TnYL0dMkCkdFjqEhDU8+54Dm54nT/DVwDmCel4r+s9YzWRz1V5ypRcRp9oqHmLwKRg+UcT+OoukOP9ulFpFsgfvnar9lpz7GHWGfInS/fFRtmv3ufXcHBMh4EUCZhIPQUz3eFzmvkzH6ATvxFQVGc667Ib0hsne2WeKZT6Izo6hQmphwpFqAstPBm1qPEsFL1hG6ye4/Cn81ViH+MNRKMvuZ7VYWBocaiJOsbeGuhhkyH2i8WiNLVWV5yHE3LmjtacKXO8eaZAKSoBzAsnx0Po9V0y4hd94/gVtekUUUfvYboyKlf3t2IliU2e9YSyPpgUZ1YHaMfzb12MYfutVkRJNxv/98qteLE++/pzCmM4nmR/ItZqgR7ei4MUXe5WDo5OglaBOsa7JHDCOH3JKVfCjlkDkKXV42VTtDYCloQUapVZ3aDiOWqBzZzw2KZI+bJ1EPM++Hs2NPjOQWxlCN5MOQCNMRYMioRRiM8p2C44cPdGrTNRyJjH7qSqcndj//XicpiQ28+wAAMleanx+Dfi2CPTWvCciWFISIEBnWWrKHdQVuZv68SE5XVw==
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCv36ncIXb6GuWZuxt0WZDzysXgJzjP+y9ALMYDqyAzkAOiIKg4OxGvYR7isQMZ03oeNY0MKWb02XcKcSNy8UuKltPXNiNVOWT0JeG5kK5PQ1FcTU6NwQPUxqfEQIKsH+wx8mHBylq59jrRNFvq8Uj66etGlummAEWGdZwauzVOLY7dCkXUc7+CDQl0yQzgRu+M3z0oBRrdBcBmSpoQIZg6Bm6oR3edUA4lfPBCzuhU9TEIjmaXMJhtbKmXx/8qW3ki3Z/ALt12CTaDslHFCDi+i8d2mXUGmXOWaD8yJmyfSqmtvI6JzG4e7jk80yWj7l/g6UsAOJRqhiRpp4xo76Tl
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3CKKgVLw9oBBM+s70chHUTb5BsHhemBsOSDCqG2AV9kWIGKNgIrc0+jWSp3KpV2oSJpIR+SUXwQfwt36p9v9H86A/YllZ46m0jFvTx7z2a4FqD9CVOsoZbk1MYH/y2zcj8Qv+aztlQsN97wnnGE9nrQVqK2R3Yj9QMcKxHWa29+NvWCOyPB+X0EC2s9lsoOFwiMyVM4aw/ultww9VXZJml074WBEEKLuz7EkdbjOvRE6pCpcS0zsK4a5iyT85Y1NsvoVLps7/YrTLDl/KFOHOhBhkU/+OSgi68elHYgT7XewYEZ0lMg9+Ie43a2b6pgqXA0+GegQEYg8TzjGxetTbz7AGlgujxeEleiTe63Zlb8YuyiEZaePl+vnE7sUYG6ctqDckj/26UGjL9ncv6ebSfpGedEEUGjDw/4BqkV5guYfg8jynLU6eX73OS0IaC4kT0RW0o9Jl8WqIqDk4yq1BVLse0XN6JUvC7yZIO2CTANCeKsOB4MS+HJEDpEvlHDmiLsma20ks+GylUl+ziVqwAwfgI15n3vc9Xr4Eiup2yVvrMcfq10fy8c5cT8O17moRPErJ77RPdmmyJWHFYg/HTEnVb9M48ag7sVkfS5SMrocmND9fkg+Uk8r6cEKZUjKGU4iH7gsp83n5gd1lLgZmGX6HipqsWFi+U+DpxNm3tQ==
+EOS
+end

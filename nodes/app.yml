@@ -1,3 +1,11 @@
 role: app
+users:
+  - kabesan
+  - takeuchi
+  - furusawa
+sudoers:
+  - kabesan
+  - takeuchi
+  - furusawa
 recipes:
   - roles/app.rb
