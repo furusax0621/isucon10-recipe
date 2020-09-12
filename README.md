@@ -16,7 +16,6 @@
 sudo su -
 mkdir /recipe && cd /recipe
 tar xvzf /tmp/recipe.tar.gz
-./bootstrap.sh
 ./install.sh
 ```
 
